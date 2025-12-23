@@ -193,14 +193,24 @@ h1{
 
 
 * Sets desplazados hacia la izquierda */
+.settable{
+  table-layout: fixed;
+  width: 100%;
+}
+
+.settable th:nth-child(1),
+.settable td:nth-child(1){
+  width: 70%;   /* más espacio para nombres */
+}
+
 .settable th:nth-child(2), .settable td:nth-child(2),
 .settable th:nth-child(3), .settable td:nth-child(3),
 .settable th:nth-child(4), .settable td:nth-child(4){
-  width: 8%;   /* 👈 menos ancho */
-  padding-left: 0;     /* 👈 quita espacio a la izquierda */
-  padding-right: 2px;  /* 👈 mínimo espacio a la derecha */
+  width: 10%;
+  text-align: left;      /* <-- esto hace que no queden “centrados con hueco” */
+  padding-left: 0;
+  padding-right: 2px;
 }
-
 
 /* Solo el nombre ganador en verde */
 .settable td.teamcell.winner{
@@ -268,3 +278,10 @@ ul{ margin: 8px 0 0 18px; padding: 0; }
 li{ margin: 6px 0; color: rgba(255,255,255,.88); }
 b{ color: rgba(255,255,255,.95); }
 
+/* Partidos: el nombre del equipo SIEMPRE en una línea */
+.settable td.teamcell{
+  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: normal;
+}
