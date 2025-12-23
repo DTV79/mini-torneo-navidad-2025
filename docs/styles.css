@@ -437,3 +437,15 @@ ul li{
   min-width: 260px;
   white-space: nowrap;
 }
+
+/* ===== Leyenda de clasificación ===== */
+.standings-legend{
+  margin-top: 6px;
+  font-size: 11px;
+  color: rgba(255,255,255,.6);
+  line-height: 1.4;
+}
+
+.standings-legend em{
+  font-style: italic;
+}
