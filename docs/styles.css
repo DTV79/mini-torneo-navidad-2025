@@ -179,7 +179,7 @@ h1{
   width: 64%;
   text-align: left;
   padding-left: 0;
-  padding-right: 2px;   /* 👈 MUCHO más cerca de los sets */
+  padding-right: 6px;   /* 👈 MUCHO más cerca de los sets */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
