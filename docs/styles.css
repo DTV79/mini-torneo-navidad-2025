@@ -152,64 +152,55 @@ h1{
 
 .matchgrid{ width:100%; }
 
-/* ===== Partidos (ajustado para que NO se salga en móvil) ===== */
+/* ===== Partidos (FINAL): sets pegados al nombre y sin desbordes ===== */
 .settable{
-  width:100%;
+  width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
 }
 
-/* Sets más juntos (menos padding) */
+/* Compacto en horizontal para que quepa todo */
 .settable th, .settable td{
   border-bottom: 0;
   padding: 3px 2px;
   font-size: 13px;
-  text-align: center;
 }
 
-/* EXCEPCIÓN: columna equipos siempre a la izquierda */
-.settable td.teamcell,
-.settable th.teamcell{
-  text-align: left;
-}
-
-/* Cabeceras un pelín más compactas */
+/* Cabeceras */
 .settable th{
   font-size: 11px;
   letter-spacing: .06em;
+  color: rgba(255,255,255,.60);
+  font-weight: 800;
 }
 
-/* Columna equipos con MÁS ancho para cortar menos */
-..settable th:nth-child(1),
+/* Columna EQUIPOS: una sola línea y a la izquierda.
+   IMPORTANTE: bajamos su ancho para que los sets "se acerquen" */
+.settable th:nth-child(1),
 .settable td:nth-child(1){
-  width: 60%; /* 👈 MÁS espacio para el nombre */
+  width: 56%;              /* <-- esto es lo que mueve I/II/III a la izquierda */
   text-align: left;
   padding-left: 0;
-  padding-right: 2px;   /* 👈 MUCHO más cerca de los sets */
+  padding-right: 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-
-* Sets desplazados hacia la izquierda */
-.settable{
-  table-layout: fixed;
-  width: 100%;
-}
-
-.settable th:nth-child(1),
-.settable td:nth-child(1){
-  width: 70%;   /* más espacio para nombres */
-}
-
+/* Sets: muy compactos y alineados a la izquierda para que no queden "separados" */
 .settable th:nth-child(2), .settable td:nth-child(2),
 .settable th:nth-child(3), .settable td:nth-child(3),
 .settable th:nth-child(4), .settable td:nth-child(4){
-  width: 12.6%;   /* 👈 más ancho = bloque más a la izquierda */
-  text-align: left;      /* <-- esto hace que no queden “centrados con hueco” */
+  width: 14.66%;           /* 56 + 14.66*3 ≈ 100 */
+  text-align: left;
   padding-left: 0;
   padding-right: 1px;
+}
+
+/* Números siempre normales */
+.settable td{
+  color: rgba(255,255,255,.88);
+  font-weight: 400;
 }
 
 /* Solo el nombre ganador en verde */
@@ -218,11 +209,7 @@ h1{
   font-weight: 700;
 }
 
-/* números siempre normales */
-.settable td{
-  color: rgba(255,255,255,.88);
-  font-weight: 400;
-}
+
 
 /* ===== Clasificación (SIN SCROLL, compacta) ===== */
 .standings-table{
