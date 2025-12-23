@@ -182,7 +182,7 @@ h1{
 /* Columna equipos con MÁS ancho para cortar menos */
 ..settable th:nth-child(1),
 .settable td:nth-child(1){
-  width: 72%; /* 👈 MÁS espacio para el nombre */
+  width: 60%; /* 👈 MÁS espacio para el nombre */
   text-align: left;
   padding-left: 0;
   padding-right: 2px;   /* 👈 MUCHO más cerca de los sets */
