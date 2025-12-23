@@ -149,8 +149,6 @@ function renderStandings(elId, rows){
   `;
 }
 
-
-
 function renderBracket(elId, data){
   const bracket = data.bracket || {};
   const semis = bracket.semifinals || [];
