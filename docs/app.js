@@ -86,8 +86,7 @@ function matchCard(m){
     </div>
   </div>
 `;
-
-
+}
 
 function renderMatches(elId, matches){
   if (!matches || !matches.length){
