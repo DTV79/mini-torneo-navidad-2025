@@ -206,10 +206,10 @@ h1{
 .settable th:nth-child(2), .settable td:nth-child(2),
 .settable th:nth-child(3), .settable td:nth-child(3),
 .settable th:nth-child(4), .settable td:nth-child(4){
-  width: 10%;
+  width: 12.6%;   /* 👈 más ancho = bloque más a la izquierda */
   text-align: left;      /* <-- esto hace que no queden “centrados con hueco” */
   padding-left: 0;
-  padding-right: 2px;
+  padding-right: 1px;
 }
 
 /* Solo el nombre ganador en verde */
