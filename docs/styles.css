@@ -324,3 +324,18 @@ b{ color: rgba(255,255,255,.95); }
   width: 13.33%;         /* I / II / III SIEMPRE iguales */
   text-align: center;
 }
+
+/* Quitar símbolos (<, •, etc.) delante de los partidos */
+.matchlist,
+.matchlist ul,
+.matchlist li{
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+
+/* Seguridad extra: ninguna lista con partidos tiene marcador */
+ul li{
+  list-style: none;
+}
