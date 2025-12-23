@@ -162,7 +162,7 @@ h1{
 /* Sets más juntos (menos padding) */
 .settable th, .settable td{
   border-bottom: 0;
-  padding: 3px 4px;     /* <-- antes 4px 8px */
+  padding: 3px 2px;     /* <-- antes 3px 4px */
   font-size: 13px;
   text-align: center;
 }
@@ -174,16 +174,17 @@ h1{
 }
 
 /* Columna equipos con MÁS ancho para cortar menos */
-.settable th:nth-child(1),
+..settable th:nth-child(1),
 .settable td:nth-child(1){
-  width: 64%;           /* <-- más ancho para el nombre */
+  width: 64%;
   text-align: left;
   padding-left: 0;
-  padding-right: 6px;
+  padding-right: 2px;   /* 👈 MUCHO más cerca de los sets */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 
 /* I/II/III más estrechos y fijos */
 .settable th:nth-child(2), .settable td:nth-child(2),
