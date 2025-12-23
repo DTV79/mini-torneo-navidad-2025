@@ -97,41 +97,51 @@ function renderMatches(elId, matches){
 }
 
 function renderStandings(elId, rows){
+  const el = document.getElementById(elId);
+
   if (!rows || !rows.length){
-    document.getElementById(elId).innerHTML = `<p class="muted">—</p>`;
+    el.innerHTML = `<p class="muted">—</p>`;
     return;
   }
 
-  // esperamos formato: {pos, team, pj, w, l, dif_sets, dif_games}
   const body = rows.map(r => {
     const qualify = (r.pos === 1 || r.pos === 2) ? "qualify" : "";
     return `
       <tr class="${qualify}">
-        <td>${esc(r.pos)}</td>
-        <td>${esc(r.team)}</td>
-        <td>${esc(r.pj)}</td>
-        <td>${esc(r.w)}</td>
-        <td>${esc(r.l)}</td>
-        <td>${esc(r.dif_sets)}</td>
-        <td>${esc(r.dif_games)}</td>
+        <td class="c-pos">${esc(r.pos)}</td>
+        <td class="c-team">${esc(r.team)}</td>
+        <td class="c-num">${esc(r.pj)}</td>
+        <td class="c-num">${esc(r.w)}</td>
+        <td class="c-num hide-xs">${esc(r.l)}</td>
+        <td class="c-num">${esc(r.dif_sets)}</td>
+        <td class="c-num">${esc(r.dif_games)}</td>
       </tr>
     `;
   }).join("");
 
-  const html = `
+  el.innerHTML = `
     <div class="standings">
-      <table>
+      <table class="standings-table">
         <thead>
           <tr>
-            <th>Pos</th><th>Equipo</th><th>PJ</th><th>V</th><th>D</th><th>Dif Sets</th><th>Dif Juegos</th>
+            <th class="c-pos">#</th>
+            <th class="c-team">Equipo</th>
+            <th class="c-num">PJ</th>
+            <th class="c-num">V</th>
+            <th class="c-num hide-xs">D</th>
+            <th class="c-num">DS</th>
+            <th class="c-num">DJ</th>
           </tr>
         </thead>
         <tbody>${body}</tbody>
       </table>
+      <div class="standings-legend muted">
+        Desempate: DS (dif. sets), luego DJ (dif. juegos).
+      </div>
     </div>
   `;
-  document.getElementById(elId).innerHTML = html;
 }
+
 
 function renderBracket(elId, data){
   const bracket = data.bracket || {};
