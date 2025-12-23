@@ -11,3 +11,73 @@ th { background: #fafafa; }
 .pill { display:inline-block; border:1px solid #ddd; border-radius:999px; padding: 6px 10px; margin: 4px 6px 0 0; }
 .grid2 { display: grid; grid-template-columns: 1fr; gap: 12px; }
 @media (min-width: 900px){ .grid2 { grid-template-columns: 1fr 1fr; } }
+.subhead{
+  margin-top: 14px;
+  font-size: 13px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #666;
+  font-weight: 600;
+}
+
+.teams .pill { margin-top: 6px; }
+
+.matchlist { display: grid; gap: 10px; }
+.matchcard{
+  border-top: 2px solid #111;
+  padding-top: 8px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+.teamscol { min-width: 0; }
+.scorecol{
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 4px;
+  text-align: right;
+  min-width: 90px;
+}
+
+.scorehead{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-size: 12px;
+  color: #666;
+  font-weight: 700;
+  letter-spacing: .03em;
+}
+
+.scorerow{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.teamrow{
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 14px;
+}
+.teamrow .name{ white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.teamrow.winner .name{ font-weight: 800; }
+.teamrow.winner{ color: #0a7a2a; } /* ganador */
+.teamrow.loser{ color: #111; }
+
+.badge{
+  display:inline-block;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 2px 8px;
+  color: #666;
+}
+
+.standings table tr.qualify td:first-child{ font-weight: 800; }
+.standings table tr.qualify td:nth-child(2){ font-weight: 800; }
+.standings table tr.qualify{ background: #f4fff7; }
