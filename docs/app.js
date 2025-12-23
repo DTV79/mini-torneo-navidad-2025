@@ -110,11 +110,16 @@ function renderStandings(elId, rows){
       <tr class="${qualify}">
         <td class="c-pos">${esc(r.pos)}</td>
         <td class="c-team">${esc(r.team)}</td>
+        <td class="c-num">${esc(r.ptos)}</td>
         <td class="c-num">${esc(r.pj)}</td>
-        <td class="c-num">${esc(r.w)}</td>
-        <td class="c-num hide-xs">${esc(r.l)}</td>
-        <td class="c-num">${esc(r.dif_sets)}</td>
-        <td class="c-num">${esc(r.dif_games)}</td>
+        <td class="c-num">${esc(r.pg)}</td>
+        <td class="c-num">${esc(r.pp)}</td>
+        <td class="c-num hide-xs">${esc(r.sg)}</td>
+        <td class="c-num hide-xs">${esc(r.sp)}</td>
+        <td class="c-num">${esc(r.sd)}</td>
+        <td class="c-num hide-sm">${esc(r.pgan)}</td>
+        <td class="c-num hide-sm">${esc(r.pper)}</td>
+        <td class="c-num">${esc(r.pdif)}</td>
       </tr>
     `;
   }).join("");
@@ -124,23 +129,26 @@ function renderStandings(elId, rows){
       <table class="standings-table">
         <thead>
           <tr>
-            <th class="c-pos">#</th>
+            <th class="c-pos">Pos</th>
             <th class="c-team">Equipo</th>
+            <th class="c-num">Ptos</th>
             <th class="c-num">PJ</th>
-            <th class="c-num">V</th>
-            <th class="c-num hide-xs">D</th>
-            <th class="c-num">DS</th>
-            <th class="c-num">DJ</th>
+            <th class="c-num">PG</th>
+            <th class="c-num">PP</th>
+            <th class="c-num hide-xs">SG</th>
+            <th class="c-num hide-xs">SP</th>
+            <th class="c-num">SD</th>
+            <th class="c-num hide-sm">PGan</th>
+            <th class="c-num hide-sm">PPer</th>
+            <th class="c-num">PDif</th>
           </tr>
         </thead>
         <tbody>${body}</tbody>
       </table>
-      <div class="standings-legend muted">
-        Desempate: DS (dif. sets), luego DJ (dif. juegos).
-      </div>
     </div>
   `;
 }
+
 
 
 function renderBracket(elId, data){
