@@ -69,9 +69,9 @@ function matchCard(m){
         <tbody>
           <tr>
             <td class="teamcell winner">${esc(winner)}</td>
-            <td class="winner">${esc(s1w)}</td>
-            <td class="winner">${esc(s2w)}</td>
-            <td class="winner">${esc(s3w)}</td>
+            <<td>${esc(s1w)}</td>
+            <td>${esc(s2w)}</td>
+            <td>${esc(s3w)}</td>
           </tr>
           <tr>
             <td class="teamcell">${esc(loser)}</td>
