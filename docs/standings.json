@@ -1,0 +1,33 @@
+{
+  "updated_at": "—",
+  "groups": {
+    "Y": ["Equipo Y1", "Equipo Y2", "Equipo Y3"],
+    "Z": ["Equipo Z1", "Equipo Z2", "Equipo Z3"]
+  },
+  "matches": [
+    {
+      "stage": "Liguilla",
+      "group": "Y",
+      "teamA": "Equipo Y1",
+      "teamB": "Equipo Y2",
+      "setsA": 2,
+      "setsB": 0,
+      "gamesA": 12,
+      "gamesB": 7
+    }
+  ],
+  "standings": {
+    "Y": [
+      { "pos": 1, "team": "Equipo Y1", "pj": 1, "w": 1, "l": 0, "dif_sets": 2, "dif_games": 5 }
+    ],
+    "Z": []
+  },
+  "bracket": {
+    "semifinals": [
+      { "label": "SF1 (1º Z vs 2º Y)", "a": "—", "b": "—", "result": "" },
+      { "label": "SF2 (1º Y vs 2º Z)", "a": "—", "b": "—", "result": "" }
+    ],
+    "final": { "a": "—", "b": "—", "result": "" }
+  },
+  "champion": "Pendiente"
+}
