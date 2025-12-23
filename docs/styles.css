@@ -335,21 +335,16 @@ b{ color: rgba(255,255,255,.95); }
 }
 
 
-/* Seguridad extra: ninguna lista con partidos tiene marcador */
-ul li{
-  list-style: none;
-}
-
-
-/* ===== Clasificación pro + móvil ===== */
+/* ===== Clasificación (con scroll horizontal) ===== */
 .standings-table{
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
+  min-width: 920px; /* fuerza scroll en móvil */
 }
 
 .standings-table th, .standings-table td{
-  padding: 10px 8px;
+  padding: 9px 8px;
   border-bottom: 1px solid var(--line);
   font-size: 13px;
 }
@@ -361,9 +356,9 @@ ul li{
   text-transform: uppercase;
 }
 
-.c-pos{ width: 34px; text-align: left; }
-.c-team{ width: auto; }
-.c-num{ width: 44px; text-align: right; }
+.c-pos{ width: 50px; text-align: left; }
+.c-team{ width: auto; min-width: 260px; }
+.c-num{ width: 54px; text-align: right; }
 
 .standings-table .c-team{
   white-space: nowrap;
@@ -380,31 +375,9 @@ ul li{
   font-weight: 800;
 }
 
-.standings-legend{
-  margin-top: 8px;
-  font-size: 12px;
-}
-
-/* En móvil: ocultamos D para que no se apelmace */
-@media (max-width: 520px){
-  .hide-xs{ display:none; }
-  .c-num{ width: 40px; }
-}
 
 
-/* Clasificación: responsive */
-.standings-table{ width:100%; border-collapse: collapse; table-layout: fixed; }
-.standings-table th, .standings-table td{ padding: 9px 8px; border-bottom: 1px solid var(--line); font-size: 13px; }
-.c-pos{ width: 50px; }
-.c-team{ width: auto; }
-.c-num{ width: 54px; text-align: right; }
-
-@media (max-width: 520px){
-  .hide-xs{ display:none; }   /* SG/SP fuera en móvil */
-  .hide-sm{ display:none; }   /* PGan/PPer fuera en móvil */
-  .c-num{ width: 50px; }
-}
-
+/* ===== Scroll horizontal SOLO para clasificación ===== */
 /* ===== Scroll horizontal SOLO para clasificación ===== */
 .table-scroll{
   overflow-x: auto;
@@ -423,14 +396,25 @@ ul li{
   border-radius: 999px;
 }
 
+.table-scroll::-webkit-scrollbar-track{
+  background: rgba(255,255,255,.06);
+  border-radius: 999px;
+}
+
+
+.table-scroll::-webkit-scrollbar{
+  height: 10px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.18);
+  border-radius: 999px;
+}
+
 .standings-table{
   min-width: 920px; /* fuerza a que exista desplazamiento en móvil */
 }
 
-.standings-hint{
-  margin-top: 8px;
-  font-size: 12px;
-}
 
 /* Que el nombre del equipo se vea más */
 .standings-table .c-team{
