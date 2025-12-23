@@ -144,12 +144,11 @@ h2{
 .settable .teamcell{
   text-align: left;
   padding-left: 0;
-  padding-right: 6px;   /* más cerca de los sets */
+  padding-right: 2px;   /* aún más cerca de los sets */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 260px;
-  color: rgba(255,255,255,.88);
 }
 
 .settable .winner{
@@ -292,4 +291,15 @@ b{ color: rgba(255,255,255,.95); }
 
 .group-y{
   color: #f59e0b;           /* naranja */
+}
+/* ===== Resultados de sets siempre en color normal ===== */
+.settable td{
+  color: rgba(255,255,255,.88);
+  font-weight: 400;
+}
+
+/* ===== Solo el nombre del equipo ganador en verde ===== */
+.settable .teamcell.winner{
+  color: var(--good);
+  font-weight: 700;
 }
