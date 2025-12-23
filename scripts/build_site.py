@@ -5,7 +5,7 @@ from datetime import datetime
 import pandas as pd
 import openpyxl
 
-EXCEL_PATH = Path("data/Mini Torneo Navidad 2025.xlsx")  # si usas .xlsm, cambia aquí
+EXCEL_PATH = Path("data/Mini Torneo Navidad 2025.xlsm")  # si usas .xlsm, cambia aquí
 SHEET = "Liguilla Navidad 2025"
 
 OUT_DIR = Path("site")
