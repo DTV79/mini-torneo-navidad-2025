@@ -81,3 +81,49 @@ th { background: #fafafa; }
 .standings table tr.qualify td:first-child{ font-weight: 800; }
 .standings table tr.qualify td:nth-child(2){ font-weight: 800; }
 .standings table tr.qualify{ background: #f4fff7; }
+.matchcard{
+  border-top: 2px solid #111;
+  padding-top: 8px;
+}
+
+.matchgrid{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 14px;
+  align-items: start;
+}
+
+.settable{
+  border-collapse: collapse;
+  min-width: 180px;
+}
+
+.settable th, .settable td{
+  border-bottom: 0;
+  padding: 4px 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.settable th{
+  background: transparent;
+  color: #666;
+  font-size: 12px;
+  letter-spacing: .04em;
+}
+
+.settable .teamcell{
+  text-align: left;
+  padding-left: 0;
+  padding-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+}
+
+.settable .winner{
+  color: #0a7a2a;
+  font-weight: 800;
+}
