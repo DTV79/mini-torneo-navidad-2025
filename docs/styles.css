@@ -303,3 +303,24 @@ b{ color: rgba(255,255,255,.95); }
   color: var(--good);
   font-weight: 700;
 }
+
+/* ===== Alineación fija de sets ===== */
+.settable{
+  table-layout: fixed;   /* CLAVE */
+  width: 100%;
+}
+
+.settable th:nth-child(1),
+.settable td:nth-child(1){
+  width: 60%;            /* columna EQUIPOS */
+}
+
+.settable th:nth-child(2),
+.settable td:nth-child(2),
+.settable th:nth-child(3),
+.settable td:nth-child(3),
+.settable th:nth-child(4),
+.settable td:nth-child(4){
+  width: 13.33%;         /* I / II / III SIEMPRE iguales */
+  text-align: center;
+}
