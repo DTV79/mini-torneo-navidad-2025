@@ -390,3 +390,17 @@ ul li{
   .hide-xs{ display:none; }
   .c-num{ width: 40px; }
 }
+
+
+/* Clasificación: responsive */
+.standings-table{ width:100%; border-collapse: collapse; table-layout: fixed; }
+.standings-table th, .standings-table td{ padding: 9px 8px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.c-pos{ width: 42px; }
+.c-team{ width: auto; }
+.c-num{ width: 54px; text-align: right; }
+
+@media (max-width: 520px){
+  .hide-xs{ display:none; }   /* SG/SP fuera en móvil */
+  .hide-sm{ display:none; }   /* PGan/PPer fuera en móvil */
+  .c-num{ width: 50px; }
+}
