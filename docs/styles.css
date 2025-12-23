@@ -244,28 +244,26 @@ b{ color: rgba(255,255,255,.95); }
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 12px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
+  padding: 8px 10px;
+  border-radius: 12px;
   background: rgba(255,255,255,.03);
+  border: 1px solid var(--line);
 }
 
 .teamdot{
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 999px;
-  background: rgba(255,255,255,.35);
+  background: rgba(255,255,255,.55); /* punto visible pero discreto */
   flex: 0 0 auto;
 }
 
 .teamname{
-  font-weight: 800;
-  letter-spacing: .2px;
-  color: rgba(255,255,255,.92);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-weight: 400;        /* sin negrita */
+  font-size: 14px;         /* tamaño igual que en partidos */
+  color: rgba(255,255,255,.88);
 }
+
 
 /* ===== Partidos: que no se vayan a la derecha ===== */
 .matchgrid{
