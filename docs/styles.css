@@ -127,10 +127,11 @@ h2{
 
 .settable th, .settable td{
   border-bottom: 0;
-  padding: 4px 8px;
+  padding: 4px 14px;   /* más separación entre I / II / III */
   font-size: 14px;
   text-align: center;
 }
+
 
 .settable th{
   background: transparent;
@@ -143,11 +144,11 @@ h2{
 .settable .teamcell{
   text-align: left;
   padding-left: 0;
-  padding-right: 12px;
+  padding-right: 6px;   /* más cerca de los sets */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 240px;
+  max-width: 260px;
   color: rgba(255,255,255,.88);
 }
 
