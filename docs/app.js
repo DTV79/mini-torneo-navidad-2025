@@ -125,9 +125,8 @@ function renderStandings(elId, rows){
   }).join("");
 
   el.innerHTML = `
-    el.innerHTML = `
   <div class="standings">
-    <div class="table-scroll" aria-label="Desliza horizontalmente para ver más columnas">
+    <div class="table-scroll">
       <table class="standings-table">
         <thead>
           <tr>
@@ -148,9 +147,29 @@ function renderStandings(elId, rows){
         <tbody>${body}</tbody>
       </table>
     </div>
-    <div class="standings-hint muted">Desliza ← → para ver todas las columnas</div>
+
+    <div class="standings-hint muted">
+      Desliza ← → para ver todas las columnas
+    </div>
+
+    <div class="standings-legend">
+      <em>
+        PTOS: Puntos Totales ·
+        PJ: Partidos Jugados ·
+        PG: Partidos Ganados ·
+        PP: Partidos Perdidos ·
+        Des: Descansos ·
+        SG: Sets Ganados ·
+        SP: Sets Perdidos ·
+        SD: Diferencia Sets ·
+        PGan: Puntos Ganados ·
+        PPer: Puntos Perdidos ·
+        PDif: Diferencia Puntos
+      </em>
+    </div>
   </div>
 `;
+
 }
 
 function renderBracket(elId, data){
