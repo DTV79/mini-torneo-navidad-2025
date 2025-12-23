@@ -40,7 +40,6 @@ function renderTeams(elId, teams){
   `).join("");
 }
 
-
 function matchCard(m){
   const winner = m.winner ?? m.teamA;
   const loser  = m.loser  ?? m.teamB;
@@ -56,36 +55,36 @@ function matchCard(m){
   const s3w = sets[2]?.w ?? "";
   const s3l = sets[2]?.l ?? "";
 
- return `
-  <div class="matchcard">
-    <div class="matchgrid">
-      <table class="settable">
-        <thead>
-          <tr>
-            <th class="teamcell">EQUIPOS</th>
-            <th>I</th>
-            <th>II</th>
-            <th>III</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="teamcell winner">${esc(winner)}</td>
-            <td>${esc(s1w)}</td>
-            <td>${esc(s2w)}</td>
-            <td>${esc(s3w)}</td>
-          </tr>
-          <tr>
-            <td class="teamcell">${esc(loser)}</td>
-            <td>${esc(s1l)}</td>
-            <td>${esc(s2l)}</td>
-            <td>${esc(s3l)}</td>
-          </tr>
-        </tbody>
-      </table>
+  return `
+    <div class="matchcard">
+      <div class="matchgrid">
+        <table class="settable">
+          <thead>
+            <tr>
+              <th class="teamcell">EQUIPOS</th>
+              <th>I</th>
+              <th>II</th>
+              <th>III</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="teamcell winner">${esc(winner)}</td>
+              <td>${esc(s1w)}</td>
+              <td>${esc(s2w)}</td>
+              <td>${esc(s3w)}</td>
+            </tr>
+            <tr>
+              <td class="teamcell">${esc(loser)}</td>
+              <td>${esc(s1l)}</td>
+              <td>${esc(s2l)}</td>
+              <td>${esc(s3l)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-`;
+  `;
 }
 
 function renderMatches(elId, matches){
@@ -114,62 +113,57 @@ function renderStandings(elId, rows){
         <td class="c-num">${esc(r.pj)}</td>
         <td class="c-num">${esc(r.pg)}</td>
         <td class="c-num">${esc(r.pp)}</td>
-        <td class="c-num hide-xs">${esc(r.sg)}</td>
-        <td class="c-num hide-xs">${esc(r.sp)}</td>
+        <td class="c-num">${esc(r.sg)}</td>
+        <td class="c-num">${esc(r.sp)}</td>
         <td class="c-num">${esc(r.sd)}</td>
-        <td class="c-num hide-sm">${esc(r.pgan)}</td>
-        <td class="c-num hide-sm">${esc(r.pper)}</td>
+        <td class="c-num">${esc(r.pgan)}</td>
+        <td class="c-num">${esc(r.pper)}</td>
         <td class="c-num">${esc(r.pdif)}</td>
       </tr>
     `;
   }).join("");
 
   el.innerHTML = `
-  <div class="standings">
-    <div class="table-scroll">
-      <table class="standings-table">
-        <thead>
-          <tr>
-            <th class="c-pos">Pos</th>
-            <th class="c-team">Equipo</th>
-            <th class="c-num">Ptos</th>
-            <th class="c-num">PJ</th>
-            <th class="c-num">PG</th>
-            <th class="c-num">PP</th>
-            <th class="c-num">SG</th>
-            <th class="c-num">SP</th>
-            <th class="c-num">SD</th>
-            <th class="c-num">PGan</th>
-            <th class="c-num">PPer</th>
-            <th class="c-num">PDif</th>
-          </tr>
-        </thead>
-        <tbody>${body}</tbody>
-      </table>
-    </div>
+    <div class="standings">
+      <div class="table-scroll">
+        <table class="standings-table">
+          <thead>
+            <tr>
+              <th class="c-pos">Pos</th>
+              <th class="c-team">Equipo</th>
+              <th class="c-num">Ptos</th>
+              <th class="c-num">PJ</th>
+              <th class="c-num">PG</th>
+              <th class="c-num">PP</th>
+              <th class="c-num">SG</th>
+              <th class="c-num">SP</th>
+              <th class="c-num">SD</th>
+              <th class="c-num">PGan</th>
+              <th class="c-num">PPer</th>
+              <th class="c-num">PDif</th>
+            </tr>
+          </thead>
+          <tbody>${body}</tbody>
+        </table>
+      </div>
 
-    <div class="standings-hint muted">
-      Desliza ← → para ver todas las columnas
+      <div class="standings-legend">
+        <em>
+          PTOS: Puntos Totales ·
+          PJ: Partidos Jugados ·
+          PG: Partidos Ganados ·
+          PP: Partidos Perdidos ·
+          Des: Descansos ·
+          SG: Sets Ganados ·
+          SP: Sets Perdidos ·
+          SD: Diferencia Sets ·
+          PGan: Puntos Ganados ·
+          PPer: Puntos Perdidos ·
+          PDif: Diferencia Puntos
+        </em>
+      </div>
     </div>
-
-    <div class="standings-legend">
-      <em>
-        PTOS: Puntos Totales ·
-        PJ: Partidos Jugados ·
-        PG: Partidos Ganados ·
-        PP: Partidos Perdidos ·
-        Des: Descansos ·
-        SG: Sets Ganados ·
-        SP: Sets Perdidos ·
-        SD: Diferencia Sets ·
-        PGan: Puntos Ganados ·
-        PPer: Puntos Perdidos ·
-        PDif: Diferencia Puntos
-      </em>
-    </div>
-  </div>
-`;
-
+  `;
 }
 
 function renderBracket(elId, data){
@@ -210,8 +204,7 @@ load().then(raw => {
   const data = normalizeToCurrentSchema(raw);
 
   document.getElementById("updated").textContent =
-  `Última actualización: ${formatUpdated(data.updated_at)}`;
-
+    `Última actualización: ${formatUpdated(data.updated_at)}`;
 
   // Equipos
   renderTeams("teamsZ", data.groups?.Z || []);
@@ -220,30 +213,26 @@ load().then(raw => {
   // Partidos: solo liguilla jugada por grupo
   const all = data.matches || [];
   const played = all.filter(m => {
-  // Nuevo esquema: m.sets = [{w:6,l:4},{w:3,l:6},{w:6,l:2}]
-  if (Array.isArray(m.sets) && m.sets.length > 0) {
-    const s0 = m.sets[0];
-    const w = s0?.w, l = s0?.l;
-    return Number.isFinite(Number(w)) && Number.isFinite(Number(l));
-  }
+    // Nuevo esquema: m.sets = [{w:6,l:4},{w:3,l:6},{w:6,l:2}]
+    if (Array.isArray(m.sets) && m.sets.length > 0) {
+      const s0 = m.sets[0];
+      const w = s0?.w, l = s0?.l;
+      return Number.isFinite(Number(w)) && Number.isFinite(Number(l));
+    }
 
-  // Compatibilidad por si hubiera esquema antiguo
-  const a = (m.setsA ?? m.sets_w);
-  const b = (m.setsB ?? m.sets_l);
-  const ga = (m.gamesA ?? m.games_w);
-  const gb = (m.gamesB ?? m.games_l);
-  return [a,b,ga,gb].every(v => v !== null && v !== undefined && v !== "");
-});
-
+    // Compatibilidad por si hubiera esquema antiguo
+    const a = (m.setsA ?? m.sets_w);
+    const b = (m.setsB ?? m.sets_l);
+    const ga = (m.gamesA ?? m.games_w);
+    const gb = (m.gamesB ?? m.games_l);
+    return [a,b,ga,gb].every(v => v !== null && v !== undefined && v !== "");
+  });
 
   const matchesZ = played.filter(m => String(m.group || m.Grupo || "").toUpperCase() === "Z");
   const matchesY = played.filter(m => String(m.group || m.Grupo || "").toUpperCase() === "Y");
 
-
-  // Si tus matches no traen group pero sí podemos inferir por equipos, lo haremos más adelante.
   renderMatches("matchesZ", [...matchesZ].reverse());
   renderMatches("matchesY", [...matchesY].reverse());
-
 
   // Clasificación
   renderStandings("standingsZ", data.standings?.Z || []);
