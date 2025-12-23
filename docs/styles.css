@@ -233,4 +233,51 @@ b{ color: rgba(255,255,255,.95); }
   text-transform: uppercase;
   font-weight: 800;
 }
+/* ===== Equipos: sin píldoras, en 3 filas ===== */
+.teams{
+  display: grid;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.teamline{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255,255,255,.03);
+}
+
+.teamdot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.35);
+  flex: 0 0 auto;
+}
+
+.teamname{
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: rgba(255,255,255,.92);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ===== Partidos: que no se vayan a la derecha ===== */
+.matchgrid{
+  grid-template-columns: 1fr; /* antes era 1fr auto */
+}
+
+.settable{
+  width: 100%;
+  min-width: 0; /* quita el empuje a la derecha */
+}
+
+.settable .teamcell{
+  max-width: none; /* que aproveche el ancho */
+}
 
