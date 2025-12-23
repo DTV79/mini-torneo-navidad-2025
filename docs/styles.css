@@ -186,11 +186,15 @@ h1{
 }
 
 
-/* I/II/III más estrechos y fijos */
-.settable th:nth-child(2), .settable td:nth-child(2),
+* Sets desplazados hacia la izquierda */
+.settable th:nth-child(2), .settable td:nth-child(2){
+  padding-left: 0;
+},
 .settable th:nth-child(3), .settable td:nth-child(3),
 .settable th:nth-child(4), .settable td:nth-child(4){
-  width: 12%;           /* 64 + 12*3 = 100 */
+  width: 12%;
+  padding-left: 0;     /* 👈 quita espacio a la izquierda */
+  padding-right: 2px;  /* 👈 mínimo espacio a la derecha */
 }
 
 
