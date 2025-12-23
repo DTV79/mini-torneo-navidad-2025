@@ -56,20 +56,22 @@ function matchCard(m){
   const s3w = sets[2]?.w ?? "";
   const s3l = sets[2]?.l ?? "";
 
-  return `
+ return `
   <div class="matchcard">
     <div class="matchgrid">
       <table class="settable">
         <thead>
           <tr>
             <th class="teamcell">EQUIPOS</th>
-            <th>I</th><th>II</th><th>III</th>
+            <th>I</th>
+            <th>II</th>
+            <th>III</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="teamcell winner">${esc(winner)}</td>
-            <<td>${esc(s1w)}</td>
+            <td>${esc(s1w)}</td>
             <td>${esc(s2w)}</td>
             <td>${esc(s3w)}</td>
           </tr>
@@ -84,7 +86,7 @@ function matchCard(m){
     </div>
   </div>
 `;
-}
+
 
 
 function renderMatches(elId, matches){
