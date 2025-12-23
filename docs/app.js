@@ -155,16 +155,25 @@ load().then(raw => {
   // Partidos: solo liguilla jugada por grupo
   const all = data.matches || [];
   const played = all.filter(m => {
-    // considera jugado si hay sets/juegos numéricos
-    const a = (m.setsA ?? m.sets_w);
-    const b = (m.setsB ?? m.sets_l);
-    const ga = (m.gamesA ?? m.games_w);
-    const gb = (m.gamesB ?? m.games_l);
-    return [a,b,ga,gb].every(v => v !== null && v !== undefined && v !== "");
-  });
+  // Nuevo esquema: m.sets = [{w:6,l:4},{w:3,l:6},{w:6,l:2}]
+  if (Array.isArray(m.sets) && m.sets.length > 0) {
+    const s0 = m.sets[0];
+    const w = s0?.w, l = s0?.l;
+    return Number.isFinite(Number(w)) && Number.isFinite(Number(l));
+  }
 
-  const matchesZ = played.filter(m => (m.group === "Z") || (m.Grupo === "Z") || (m.group === undefined && false));
-  const matchesY = played.filter(m => (m.group === "Y") || (m.Grupo === "Y") || (m.group === undefined && false));
+  // Compatibilidad por si hubiera esquema antiguo
+  const a = (m.setsA ?? m.sets_w);
+  const b = (m.setsB ?? m.sets_l);
+  const ga = (m.gamesA ?? m.games_w);
+  const gb = (m.gamesB ?? m.games_l);
+  return [a,b,ga,gb].every(v => v !== null && v !== undefined && v !== "");
+});
+
+
+  const matchesZ = played.filter(m => String(m.group || m.Grupo || "").toUpperCase() === "Z");
+  const matchesY = played.filter(m => String(m.group || m.Grupo || "").toUpperCase() === "Y");
+
 
   // Si tus matches no traen group pero sí podemos inferir por equipos, lo haremos más adelante.
   renderMatches("matchesZ", matchesZ);
