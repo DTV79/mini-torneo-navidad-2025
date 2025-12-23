@@ -125,7 +125,9 @@ function renderStandings(elId, rows){
   }).join("");
 
   el.innerHTML = `
-    <div class="standings">
+    el.innerHTML = `
+  <div class="standings">
+    <div class="table-scroll" aria-label="Desliza horizontalmente para ver más columnas">
       <table class="standings-table">
         <thead>
           <tr>
@@ -135,18 +137,20 @@ function renderStandings(elId, rows){
             <th class="c-num">PJ</th>
             <th class="c-num">PG</th>
             <th class="c-num">PP</th>
-            <th class="c-num hide-xs">SG</th>
-            <th class="c-num hide-xs">SP</th>
+            <th class="c-num">SG</th>
+            <th class="c-num">SP</th>
             <th class="c-num">SD</th>
-            <th class="c-num hide-sm">PGan</th>
-            <th class="c-num hide-sm">PPer</th>
+            <th class="c-num">PGan</th>
+            <th class="c-num">PPer</th>
             <th class="c-num">PDif</th>
           </tr>
         </thead>
         <tbody>${body}</tbody>
       </table>
     </div>
-  `;
+    <div class="standings-hint muted">Desliza ← → para ver todas las columnas</div>
+  </div>
+`;
 }
 
 function renderBracket(elId, data){
