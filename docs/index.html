@@ -13,26 +13,39 @@
   </header>
 
   <main class="container">
-    <section class="card">
-      <h2>Vista general</h2>
-      <div id="overview">Cargando…</div>
+  <div class="grid2">
+    <section class="card" id="groupZ">
+      <h2>Grupo Z</h2>
+      <div class="subhead">Equipos</div>
+      <div class="teams" id="teamsZ">Cargando…</div>
+
+      <div class="subhead">Partidos jugados</div>
+      <div id="matchesZ">Cargando…</div>
+
+      <div class="subhead">Clasificación</div>
+      <div id="standingsZ">Cargando…</div>
     </section>
 
-    <section class="card">
-      <h2>Partidos</h2>
-      <div id="matches">Cargando…</div>
-    </section>
+    <section class="card" id="groupY">
+      <h2>Grupo Y</h2>
+      <div class="subhead">Equipos</div>
+      <div class="teams" id="teamsY">Cargando…</div>
 
-    <section class="card">
-      <h2>Clasificación</h2>
-      <div id="standings">Cargando…</div>
-    </section>
+      <div class="subhead">Partidos jugados</div>
+      <div id="matchesY">Cargando…</div>
 
-    <section class="card">
-      <h2>Cruces</h2>
-      <div id="bracket">Cargando…</div>
+      <div class="subhead">Clasificación</div>
+      <div id="standingsY">Cargando…</div>
     </section>
-  </main>
+  </div>
+
+  <section class="card">
+    <h2>Eliminatorias</h2>
+    <div id="bracket">Cargando…</div>
+    <p class="muted" style="margin-top:10px">Desempates: diferencia de sets, luego diferencia de juegos.</p>
+  </section>
+</main>
+
 
   <script src="./app.js"></script>
 </body>
