@@ -404,3 +404,36 @@ ul li{
   .hide-sm{ display:none; }   /* PGan/PPer fuera en móvil */
   .c-num{ width: 50px; }
 }
+
+/* ===== Scroll horizontal SOLO para clasificación ===== */
+.table-scroll{
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255,255,255,.02);
+}
+
+.table-scroll::-webkit-scrollbar{
+  height: 10px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.18);
+  border-radius: 999px;
+}
+
+.standings-table{
+  min-width: 920px; /* fuerza a que exista desplazamiento en móvil */
+}
+
+.standings-hint{
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+/* Que el nombre del equipo se vea más */
+.standings-table .c-team{
+  min-width: 260px;
+  white-space: nowrap;
+}
