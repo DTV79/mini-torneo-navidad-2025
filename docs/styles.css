@@ -449,3 +449,18 @@ ul li{
 .standings-legend em{
   font-style: italic;
 }
+
+
+/* ===== Partidos: fuerza tamaño como antes ===== */
+.settable th, .settable td{
+  font-size: 13px;         /* antes se te ha subido */
+}
+
+.settable .teamcell{
+  font-size: 13px;
+  font-weight: 400;        /* normal */
+}
+
+.settable .teamcell.winner{
+  font-weight: 700;        /* solo el nombre ganador destaca */
+}
