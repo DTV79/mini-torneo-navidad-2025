@@ -12,6 +12,11 @@
 }
 
 *{ box-sizing:border-box; }
+
+html, body{
+  overflow-x: hidden; /* evita scroll horizontal de toda la página */
+}
+
 body{
   margin:0;
   background: radial-gradient(1200px 600px at 20% -10%, rgba(34,197,94,.18), transparent 60%),
@@ -60,16 +65,6 @@ h2{
   letter-spacing: .2px;
 }
 
-.subhead{
-  margin-top: 12px;
-  margin-bottom: 8px;
-  font-size: 12px;
-  letter-spacing: .10em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.55);
-  font-weight: 700;
-}
-
 .grid2{
   display:grid;
   grid-template-columns: 1fr;
@@ -81,120 +76,7 @@ h2{
   h1{ font-size: 26px; }
 }
 
-.pill{
-  display:inline-flex;
-  align-items:center;
-  gap: 6px;
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(255,255,255,.03);
-  margin: 6px 8px 0 0;
-  font-size: 13px;
-  color: rgba(255,255,255,.86);
-}
-
-.badge{
-  display:inline-block;
-  font-size: 11px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 2px 8px;
-  color: rgba(255,255,255,.62);
-  background: rgba(255,255,255,.03);
-}
-
-/* ===== Partidos estilo "acta" ===== */
-.matchlist{ display:grid; gap: 12px; }
-
-.matchcard{
-  border-top: 2px solid rgba(255,255,255,.55);
-  padding-top: 10px;
-}
-
-.matchgrid{
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 14px;
-  align-items: start;
-}
-
-.settable{
-  border-collapse: collapse;
-  min-width: 210px;
-}
-
-.settable th, .settable td{
-  border-bottom: 0;
-  padding: 4px 14px;   /* más separación entre I / II / III */
-  font-size: 14px;
-  text-align: center;
-}
-
-
-.settable th{
-  background: transparent;
-  color: rgba(255,255,255,.60);
-  font-size: 12px;
-  letter-spacing: .08em;
-  font-weight: 800;
-}
-
-.settable .teamcell{
-  text-align: left;
-  padding-left: 0;
-  padding-right: 2px;   /* aún más cerca de los sets */
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 260px;
-}
-
-.settable .winner{
-  color: var(--good);
-  font-weight: 900;
-}
-
-/* ===== Clasificación ===== */
-.standings table{
-  width: 100%;
-  border-collapse: collapse;
-  overflow: hidden;
-  border-radius: 14px;
-}
-
-.standings th, .standings td{
-  padding: 10px 10px;
-  font-size: 13px;
-  border-bottom: 1px solid var(--line);
-  text-align: left;
-}
-
-.standings th{
-  background: rgba(255,255,255,.04);
-  color: rgba(255,255,255,.70);
-  font-size: 12px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
-.standings tr.qualify{
-  background: rgba(34,197,94,.08);
-}
-
-.standings tr.qualify td:nth-child(2){
-  font-weight: 900;
-}
-
-.standings tr:last-child td{ border-bottom: 0; }
-
-/* ===== Listas (cruces) ===== */
-ul{ margin: 8px 0 0 18px; padding: 0; }
-li{ margin: 6px 0; color: rgba(255,255,255,.88); }
-b{ color: rgba(255,255,255,.95); }
 /* ===== Separación clara de secciones dentro de cada grupo ===== */
-
 .section {
   margin-top: 14px;
   padding-top: 12px;
@@ -207,6 +89,13 @@ b{ color: rgba(255,255,255,.95); }
 }
 
 .subhead{
+  margin-top: 12px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -233,7 +122,19 @@ b{ color: rgba(255,255,255,.95); }
   text-transform: uppercase;
   font-weight: 800;
 }
-/* ===== Equipos: sin píldoras, en 3 filas ===== */
+
+/* ===== Títulos de grupo ===== */
+.group-title{
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .3px;
+  margin-bottom: 6px;
+}
+
+.group-z{ color: #60a5fa; } /* azul */
+.group-y{ color: #f59e0b; } /* naranja */
+
+/* ===== Equipos ===== */
 .teams{
   display: grid;
   gap: 8px;
@@ -244,88 +145,94 @@ b{ color: rgba(255,255,255,.95); }
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 4px 0;     /* sin “caja” alrededor */
+  padding: 4px 0;
 }
-
 
 .teamdot{
   width: 6px;
   height: 6px;
   border-radius: 999px;
-  background: rgba(255,255,255,.55); /* punto visible pero discreto */
+  background: rgba(255,255,255,.55);
   flex: 0 0 auto;
 }
 
 .teamname{
-  font-weight: 400;        /* sin negrita */
-  font-size: 14px;         /* tamaño igual que en partidos */
+  font-weight: 400;
+  font-size: 14px;
   color: rgba(255,255,255,.88);
 }
 
+/* ===== Partidos jugados ===== */
+.matchlist{ display:grid; gap: 12px; }
 
-/* ===== Partidos: que no se vayan a la derecha ===== */
-.matchgrid{
-  grid-template-columns: 1fr; /* antes era 1fr auto */
+.matchcard{
+  border-top: 2px solid rgba(255,255,255,.55);
+  padding-top: 10px;
 }
 
+.matchgrid{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr; /* evita desplazamiento a la derecha */
+  gap: 0;
+  align-items: start;
+}
+
+/* Tabla de sets: SIEMPRE debe caber en móvil */
 .settable{
   width: 100%;
-  min-width: 0; /* quita el empuje a la derecha */
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 
-.settable .teamcell{
-  max-width: none; /* que aproveche el ancho */
+/* Tamaño consistente para que no “crezca” */
+.settable th, .settable td{
+  border-bottom: 0;
+  font-size: 13px;
+  padding: 4px 10px; /* reduce ancho para que quepan I/II/III */
+  text-align: center;
 }
 
-/* ===== Títulos de grupo ===== */
-.group-title{
-  font-size: 20px;          /* más grande */
+.settable th{
+  background: transparent;
+  color: rgba(255,255,255,.60);
+  font-size: 12px;
+  letter-spacing: .08em;
   font-weight: 800;
-  letter-spacing: .3px;
-  margin-bottom: 6px;
 }
 
-.group-z{
-  color: #60a5fa;           /* azul */
+/* Columna EQUIPOS más estrecha para dejar hueco a sets */
+.settable th:nth-child(1),
+.settable td:nth-child(1){
+  width: 52%;
+  text-align: left;
+  padding-left: 0;
+  padding-right: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.group-y{
-  color: #f59e0b;           /* naranja */
+/* I / II / III */
+.settable th:nth-child(2), .settable td:nth-child(2),
+.settable th:nth-child(3), .settable td:nth-child(3),
+.settable th:nth-child(4), .settable td:nth-child(4){
+  width: 16%;
 }
-/* ===== Resultados de sets siempre en color normal ===== */
+
+/* Números siempre normales */
 .settable td{
   color: rgba(255,255,255,.88);
   font-weight: 400;
 }
 
-/* ===== Solo el nombre del equipo ganador en verde ===== */
-.settable .teamcell.winner{
+/* Solo el nombre ganador en verde */
+.settable td.teamcell.winner{
   color: var(--good);
   font-weight: 700;
 }
 
-/* ===== Alineación fija de sets ===== */
-.settable{
-  table-layout: fixed;   /* CLAVE */
-  width: 100%;
-}
-
-.settable th:nth-child(1),
-.settable td:nth-child(1){
-  width: 60%;            /* columna EQUIPOS */
-}
-
-.settable th:nth-child(2),
-.settable td:nth-child(2),
-.settable th:nth-child(3),
-.settable td:nth-child(3),
-.settable th:nth-child(4),
-.settable td:nth-child(4){
-  width: 13.33%;         /* I / II / III SIEMPRE iguales */
-  text-align: center;
-}
-
-/* Quitar símbolos (<, •, etc.) delante de los partidos */
+/* Quitar marcadores de listas solo en partidos (si existiera) */
 .matchlist,
 .matchlist ul,
 .matchlist li{
@@ -334,8 +241,35 @@ b{ color: rgba(255,255,255,.95); }
   margin-left: 0;
 }
 
+/* ===== Cruces ===== */
+ul{ margin: 8px 0 0 18px; padding: 0; }
+li{ margin: 6px 0; color: rgba(255,255,255,.88); }
+b{ color: rgba(255,255,255,.95); }
 
-/* ===== Clasificación (con scroll horizontal) ===== */
+/* ===== Clasificación (con scroll dentro del recuadro) ===== */
+.table-scroll{
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;                 /* scroll solo aquí */
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-x;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255,255,255,.02);
+}
+
+.table-scroll::-webkit-scrollbar{ height: 10px; }
+.table-scroll::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.18);
+  border-radius: 999px;
+}
+.table-scroll::-webkit-scrollbar-track{
+  background: rgba(255,255,255,.06);
+  border-radius: 999px;
+}
+
 .standings-table{
   width: 100%;
   border-collapse: collapse;
@@ -350,6 +284,7 @@ b{ color: rgba(255,255,255,.95); }
 }
 
 .standings-table th{
+  background: rgba(255,255,255,.04);
   color: rgba(255,255,255,.65);
   font-size: 12px;
   letter-spacing: .08em;
@@ -375,53 +310,6 @@ b{ color: rgba(255,255,255,.95); }
   font-weight: 800;
 }
 
-
-
-/* ===== Scroll horizontal SOLO para clasificación ===== */
-/* ===== Scroll horizontal SOLO para clasificación ===== */
-.table-scroll{
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(255,255,255,.02);
-}
-
-.table-scroll::-webkit-scrollbar{
-  height: 10px;
-}
-
-.table-scroll::-webkit-scrollbar-thumb{
-  background: rgba(255,255,255,.18);
-  border-radius: 999px;
-}
-
-.table-scroll::-webkit-scrollbar-track{
-  background: rgba(255,255,255,.06);
-  border-radius: 999px;
-}
-
-
-.table-scroll::-webkit-scrollbar{
-  height: 10px;
-}
-
-.table-scroll::-webkit-scrollbar-thumb{
-  background: rgba(255,255,255,.18);
-  border-radius: 999px;
-}
-
-.standings-table{
-  min-width: 920px; /* fuerza a que exista desplazamiento en móvil */
-}
-
-
-/* Que el nombre del equipo se vea más */
-.standings-table .c-team{
-  min-width: 260px;
-  white-space: nowrap;
-}
-
 /* ===== Leyenda de clasificación ===== */
 .standings-legend{
   margin-top: 6px;
@@ -430,21 +318,5 @@ b{ color: rgba(255,255,255,.95); }
   line-height: 1.4;
 }
 
-.standings-legend em{
-  font-style: italic;
-}
+.standings-legend em{ font-style: italic; }
 
-
-/* ===== Partidos: fuerza tamaño como antes ===== */
-.settable th, .settable td{
-  font-size: 13px;         /* antes se te ha subido */
-}
-
-.settable .teamcell{
-  font-size: 13px;
-  font-weight: 400;        /* normal */
-}
-
-.settable .teamcell.winner{
-  font-weight: 700;        /* solo el nombre ganador destaca */
-}
