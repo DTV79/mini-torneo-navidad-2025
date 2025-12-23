@@ -17,41 +17,51 @@ function renderTeams(elId, teams){
 }
 
 function matchCard(m){
-  // En tu JSON actual vienen como winner/loser o como teamA/teamB?
-  // Nuestra web de antes usaba teamA/teamB/setsA/setsB...
-  // Aquí soportamos ambos formatos.
   const winner = m.winner ?? m.teamA;
   const loser  = m.loser  ?? m.teamB;
 
-  const setsW = m.sets_w ?? m.setsA;
-  const setsL = m.sets_l ?? m.setsB;
-  const gamesW = m.games_w ?? m.gamesA;
-  const gamesL = m.games_l ?? m.gamesB;
+  // Nuevo: sets por set -> [{w:6,l:4},{w:3,l:6},{w:6,l:2}]
+  const sets = Array.isArray(m.sets) ? m.sets : [];
+
+  // Render columnas I/II/III siempre (si falta, vacío)
+  const s1w = sets[0]?.w ?? "";
+  const s1l = sets[0]?.l ?? "";
+  const s2w = sets[1]?.w ?? "";
+  const s2l = sets[1]?.l ?? "";
+  const s3w = sets[2]?.w ?? "";
+  const s3l = sets[2]?.l ?? "";
 
   return `
     <div class="matchcard">
-      <div class="teamscol">
-        <div class="teamrow winner">
-          <span class="name">${esc(winner)}</span>
-          <span class="badge">Ganador</span>
-        </div>
-        <div class="teamrow loser">
-          <span class="name">${esc(loser)}</span>
-        </div>
-      </div>
-
-      <div class="scorecol">
-        <div class="scorehead">
-          <div>SETS</div><div>JUEGOS</div>
-        </div>
-        <div class="scorerow">
-          <div>${esc(setsW)}-${esc(setsL)}</div>
-          <div>${esc(gamesW)}-${esc(gamesL)}</div>
-        </div>
+      <div class="matchgrid">
+        <div></div>
+        <table class="settable">
+          <thead>
+            <tr>
+              <th class="teamcell">EQUIPOS</th>
+              <th>I</th><th>II</th><th>III</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="teamcell winner">${esc(winner)}</td>
+              <td class="winner">${esc(s1w)}</td>
+              <td class="winner">${esc(s2w)}</td>
+              <td class="winner">${esc(s3w)}</td>
+            </tr>
+            <tr>
+              <td class="teamcell">${esc(loser)}</td>
+              <td>${esc(s1l)}</td>
+              <td>${esc(s2l)}</td>
+              <td>${esc(s3l)}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   `;
 }
+
 
 function renderMatches(elId, matches){
   if (!matches || !matches.length){
