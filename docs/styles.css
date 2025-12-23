@@ -13,10 +13,6 @@
 
 *{ box-sizing:border-box; }
 
-html, body{
-  overflow-x: hidden; /* evita scroll horizontal de toda la página */
-}
-
 body{
   margin:0;
   background: radial-gradient(1200px 600px at 20% -10%, rgba(34,197,94,.18), transparent 60%),
@@ -59,12 +55,6 @@ h1{
 
 .card + .card{ margin-top: 14px; }
 
-h2{
-  margin:0 0 10px 0;
-  font-size: 16px;
-  letter-spacing: .2px;
-}
-
 .grid2{
   display:grid;
   grid-template-columns: 1fr;
@@ -76,17 +66,23 @@ h2{
   h1{ font-size: 26px; }
 }
 
-/* ===== Separación clara de secciones dentro de cada grupo ===== */
-.section {
+/* ===== Títulos de grupo ===== */
+.group-title{
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .3px;
+  margin:0 0 6px 0;
+}
+.group-z{ color: #60a5fa; }
+.group-y{ color: #f59e0b; }
+
+/* ===== Separación clara de secciones ===== */
+.section{
   margin-top: 14px;
   padding-top: 12px;
   border-top: 1px dashed var(--line);
 }
-
-.section:first-of-type{
-  border-top: 0;
-  padding-top: 0;
-}
+.section:first-of-type{ border-top:0; padding-top:0; }
 
 .subhead{
   margin-top: 12px;
@@ -96,73 +92,57 @@ h2{
   text-transform: uppercase;
   color: rgba(255,255,255,.55);
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
-
 .subhead::after{
-  content: "";
-  height: 1px;
-  flex: 1;
+  content:"";
+  height:1px;
+  flex:1;
   background: linear-gradient(to right, rgba(255,255,255,.28), transparent);
 }
-
 .subhead-label{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border:1px solid var(--line);
+  border-radius:999px;
   background: rgba(255,255,255,.04);
   color: rgba(255,255,255,.75);
-  font-size: 12px;
-  letter-spacing: .10em;
-  text-transform: uppercase;
-  font-weight: 800;
+  font-size:12px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  font-weight:800;
 }
-
-/* ===== Títulos de grupo ===== */
-.group-title{
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: .3px;
-  margin-bottom: 6px;
-}
-
-.group-z{ color: #60a5fa; } /* azul */
-.group-y{ color: #f59e0b; } /* naranja */
 
 /* ===== Equipos ===== */
 .teams{
-  display: grid;
-  gap: 8px;
-  margin-top: 6px;
+  display:grid;
+  gap:8px;
+  margin-top:6px;
 }
-
 .teamline{
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:4px 0;
 }
-
 .teamdot{
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
+  width:6px;
+  height:6px;
+  border-radius:999px;
   background: rgba(255,255,255,.55);
   flex: 0 0 auto;
 }
-
 .teamname{
   font-weight: 400;
   font-size: 14px;
   color: rgba(255,255,255,.88);
 }
 
-/* ===== Partidos jugados ===== */
+/* ===== Partidos ===== */
 .matchlist{ display:grid; gap: 12px; }
 
 .matchcard{
@@ -170,26 +150,18 @@ h2{
   padding-top: 10px;
 }
 
-.matchgrid{
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr; /* evita desplazamiento a la derecha */
-  gap: 0;
-  align-items: start;
-}
+.matchgrid{ width:100%; }
 
-/* Tabla de sets: SIEMPRE debe caber en móvil */
 .settable{
-  width: 100%;
-  table-layout: fixed;
+  width:100%;
   border-collapse: collapse;
+  table-layout: fixed; /* estable */
 }
 
-/* Tamaño consistente para que no “crezca” */
 .settable th, .settable td{
   border-bottom: 0;
+  padding: 4px 8px;     /* compacto, sin desbordar */
   font-size: 13px;
-  padding: 4px 10px; /* reduce ancho para que quepan I/II/III */
   text-align: center;
 }
 
@@ -201,29 +173,14 @@ h2{
   font-weight: 800;
 }
 
-/* Columna EQUIPOS más estrecha para dejar hueco a sets */
-.settable th:nth-child(1),
-.settable td:nth-child(1){
-  width: 52%;
+/* Columna equipos */
+.settable .teamcell{
   text-align: left;
   padding-left: 0;
-  padding-right: 6px;
+  padding-right: 8px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-/* I / II / III */
-.settable th:nth-child(2), .settable td:nth-child(2),
-.settable th:nth-child(3), .settable td:nth-child(3),
-.settable th:nth-child(4), .settable td:nth-child(4){
-  width: 16%;
-}
-
-/* Números siempre normales */
-.settable td{
-  color: rgba(255,255,255,.88);
-  font-weight: 400;
 }
 
 /* Solo el nombre ganador en verde */
@@ -232,49 +189,17 @@ h2{
   font-weight: 700;
 }
 
-/* Quitar marcadores de listas solo en partidos (si existiera) */
-.matchlist,
-.matchlist ul,
-.matchlist li{
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
+/* números siempre normales */
+.settable td{
+  color: rgba(255,255,255,.88);
+  font-weight: 400;
 }
 
-/* ===== Cruces ===== */
-ul{ margin: 8px 0 0 18px; padding: 0; }
-li{ margin: 6px 0; color: rgba(255,255,255,.88); }
-b{ color: rgba(255,255,255,.95); }
-
-/* ===== Clasificación (con scroll dentro del recuadro) ===== */
-.table-scroll{
-  width: 100%;
-  max-width: 100%;
-  overflow-x: auto;                 /* scroll solo aquí */
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  touch-action: pan-x;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(255,255,255,.02);
-}
-
-.table-scroll::-webkit-scrollbar{ height: 10px; }
-.table-scroll::-webkit-scrollbar-thumb{
-  background: rgba(255,255,255,.18);
-  border-radius: 999px;
-}
-.table-scroll::-webkit-scrollbar-track{
-  background: rgba(255,255,255,.06);
-  border-radius: 999px;
-}
-
+/* ===== Clasificación (SIN SCROLL, compacta) ===== */
 .standings-table{
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
-  min-width: 920px; /* fuerza scroll en móvil */
 }
 
 .standings-table th, .standings-table td{
@@ -291,9 +216,9 @@ b{ color: rgba(255,255,255,.95); }
   text-transform: uppercase;
 }
 
-.c-pos{ width: 50px; text-align: left; }
-.c-team{ width: auto; min-width: 260px; }
-.c-num{ width: 54px; text-align: right; }
+.c-pos{ width: 42px; text-align:left; }
+.c-team{ width:auto; }
+.c-num{ width: 46px; text-align:right; }
 
 .standings-table .c-team{
   white-space: nowrap;
@@ -310,13 +235,17 @@ b{ color: rgba(255,255,255,.95); }
   font-weight: 800;
 }
 
-/* ===== Leyenda de clasificación ===== */
+/* Leyenda */
 .standings-legend{
   margin-top: 6px;
   font-size: 11px;
   color: rgba(255,255,255,.6);
   line-height: 1.4;
 }
-
 .standings-legend em{ font-style: italic; }
+
+/* ===== Cruces ===== */
+ul{ margin: 8px 0 0 18px; padding: 0; }
+li{ margin: 6px 0; color: rgba(255,255,255,.88); }
+b{ color: rgba(255,255,255,.95); }
 
