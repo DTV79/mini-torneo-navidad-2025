@@ -12,9 +12,22 @@ function esc(s){
 }
 
 function renderTeams(elId, teams){
-  const html = (teams || []).map(t => `<span class="pill">${esc(t)}</span>`).join("");
-  document.getElementById(elId).innerHTML = html || `<span class="muted">—</span>`;
+  const el = document.getElementById(elId);
+  const list = (teams || []).filter(t => String(t).trim().length);
+
+  if (!list.length){
+    el.innerHTML = `<p class="muted">—</p>`;
+    return;
+  }
+
+  el.innerHTML = list.map(t => `
+    <div class="teamline">
+      <span class="teamdot"></span>
+      <span class="teamname">${esc(t)}</span>
+    </div>
+  `).join("");
 }
+
 
 function matchCard(m){
   const winner = m.winner ?? m.teamA;
@@ -32,34 +45,33 @@ function matchCard(m){
   const s3l = sets[2]?.l ?? "";
 
   return `
-    <div class="matchcard">
-      <div class="matchgrid">
-        <div></div>
-        <table class="settable">
-          <thead>
-            <tr>
-              <th class="teamcell">EQUIPOS</th>
-              <th>I</th><th>II</th><th>III</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="teamcell winner">${esc(winner)}</td>
-              <td class="winner">${esc(s1w)}</td>
-              <td class="winner">${esc(s2w)}</td>
-              <td class="winner">${esc(s3w)}</td>
-            </tr>
-            <tr>
-              <td class="teamcell">${esc(loser)}</td>
-              <td>${esc(s1l)}</td>
-              <td>${esc(s2l)}</td>
-              <td>${esc(s3l)}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <div class="matchcard">
+    <div class="matchgrid">
+      <table class="settable">
+        <thead>
+          <tr>
+            <th class="teamcell">EQUIPOS</th>
+            <th>I</th><th>II</th><th>III</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="teamcell winner">${esc(winner)}</td>
+            <td class="winner">${esc(s1w)}</td>
+            <td class="winner">${esc(s2w)}</td>
+            <td class="winner">${esc(s3w)}</td>
+          </tr>
+          <tr>
+            <td class="teamcell">${esc(loser)}</td>
+            <td>${esc(s1l)}</td>
+            <td>${esc(s2l)}</td>
+            <td>${esc(s3l)}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  `;
+  </div>
+`;
 }
 
 
