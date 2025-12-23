@@ -152,36 +152,46 @@ h1{
 
 .matchgrid{ width:100%; }
 
+/* ===== Partidos (ajustado para que NO se salga en móvil) ===== */
 .settable{
   width:100%;
   border-collapse: collapse;
-  table-layout: fixed; /* estable */
+  table-layout: fixed;
 }
 
+/* Sets más juntos (menos padding) */
 .settable th, .settable td{
   border-bottom: 0;
-  padding: 4px 8px;     /* compacto, sin desbordar */
+  padding: 3px 4px;     /* <-- antes 4px 8px */
   font-size: 13px;
   text-align: center;
 }
 
+/* Cabeceras un pelín más compactas */
 .settable th{
-  background: transparent;
-  color: rgba(255,255,255,.60);
-  font-size: 12px;
-  letter-spacing: .08em;
-  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: .06em;
 }
 
-/* Columna equipos */
-.settable .teamcell{
+/* Columna equipos con MÁS ancho para cortar menos */
+.settable th:nth-child(1),
+.settable td:nth-child(1){
+  width: 64%;           /* <-- más ancho para el nombre */
   text-align: left;
   padding-left: 0;
-  padding-right: 8px;
+  padding-right: 6px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* I/II/III más estrechos y fijos */
+.settable th:nth-child(2), .settable td:nth-child(2),
+.settable th:nth-child(3), .settable td:nth-child(3),
+.settable th:nth-child(4), .settable td:nth-child(4){
+  width: 12%;           /* 64 + 12*3 = 100 */
+}
+
 
 /* Solo el nombre ganador en verde */
 .settable td.teamcell.winner{
