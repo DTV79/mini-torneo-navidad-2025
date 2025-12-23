@@ -11,6 +11,18 @@ function esc(s){
     .replaceAll(">","&gt;");
 }
 
+function formatUpdated(s){
+  const txt = String(s || "").trim();
+  // Si viene como "YYYY-MM-DD HH:MM:SS"
+  const m = txt.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2}):(\d{2})$/);
+  if (m){
+    const [_, Y, M, D, hh, mm, ss] = m;
+    return `${D}/${M}/${Y} ${hh}:${mm}:${ss}`;
+  }
+  // Si ya viene en otro formato, lo dejamos tal cual
+  return txt || "—";
+}
+
 function renderTeams(elId, teams){
   const el = document.getElementById(elId);
   const list = (teams || []).filter(t => String(t).trim().length);
@@ -158,7 +170,8 @@ load().then(raw => {
   const data = normalizeToCurrentSchema(raw);
 
   document.getElementById("updated").textContent =
-    `Última actualización: ${data.updated_at || "—"}`;
+  `Última actualización: ${formatUpdated(data.updated_at)}`;
+
 
   // Equipos
   renderTeams("teamsZ", data.groups?.Z || []);
@@ -188,8 +201,9 @@ load().then(raw => {
 
 
   // Si tus matches no traen group pero sí podemos inferir por equipos, lo haremos más adelante.
-  renderMatches("matchesZ", matchesZ);
-  renderMatches("matchesY", matchesY);
+  renderMatches("matchesZ", [...matchesZ].reverse());
+  renderMatches("matchesY", [...matchesY].reverse());
+
 
   // Clasificación
   renderStandings("standingsZ", data.standings?.Z || []);
