@@ -277,3 +277,18 @@ b{ color: rgba(255,255,255,.95); }
   max-width: none; /* que aproveche el ancho */
 }
 
+/* ===== Títulos de grupo ===== */
+.group-title{
+  font-size: 20px;          /* más grande */
+  font-weight: 800;
+  letter-spacing: .3px;
+  margin-bottom: 6px;
+}
+
+.group-z{
+  color: #60a5fa;           /* azul */
+}
+
+.group-y{
+  color: #f59e0b;           /* naranja */
+}
