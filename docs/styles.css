@@ -285,3 +285,32 @@ b{ color: rgba(255,255,255,.95); }
   text-overflow: ellipsis;
   word-break: normal;
 }
+
+
+/* ===== Partidos: sets más cerca del nombre ===== */
+.settable{
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* Reduce la columna EQUIPOS para que el bloque I/II/III se acerque */
+.settable th:nth-child(1),
+.settable td:nth-child(1){
+  width: 58% !important;   /* <-- baja de 62/70 a 58 */
+}
+
+/* Reparte el resto entre I/II/III y manténlos compactos */
+.settable th:nth-child(2), .settable td:nth-child(2),
+.settable th:nth-child(3), .settable td:nth-child(3),
+.settable th:nth-child(4), .settable td:nth-child(4){
+  width: 14% !important;   /* 58 + 14*3 = 100 */
+  text-align: left;
+  padding-left: 0 !important;
+  padding-right: 1px !important;
+}
+
+/* Quita aire horizontal global */
+.settable th, .settable td{
+  padding-left: 0 !important;
+  padding-right: 2px !important;
+}
