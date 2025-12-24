@@ -406,3 +406,41 @@ a[href^="https://maps.google."]{
   border-bottom: none !important;
   cursor: default !important;
 }
+
+
+/* Subrayado debajo de las cabeceras de los partidos */
+.settable th,
+.settable td.teamcell{
+  position: relative;
+}
+
+.settable th.teamcell::after,
+.settable th:nth-child(2)::after,
+.settable th:nth-child(3)::after,
+.settable th:nth-child(4)::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+}
+
+/* Subrayado debajo de las cabeceras en semifinales y final */
+.card.bracketCard th, .card.finalCard th{
+  position: relative;
+}
+
+.card.bracketCard th::after,
+.card.finalCard th::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+}
