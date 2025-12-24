@@ -343,3 +343,10 @@ b{ color: rgba(255,255,255,.95); }
   color: #ef4444;   /* rojo */
   font-weight: 800;
 }
+
+/* Centrar título principal y fecha */
+header.container h1,
+header.container p{
+  text-align: center;
+}
+
