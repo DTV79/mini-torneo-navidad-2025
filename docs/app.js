@@ -110,7 +110,6 @@ function renderStandings(elId, rows){
         <td class="c-pos">${esc(r.pos)}</td>
         <td class="c-team">${esc(r.team)}</td>
         <td class="c-num">${esc(r.ptos)}</td>
-        <td class="c-num">${esc(r.pj)}</td>
         <td class="c-num">${esc(r.pg)}</td>
         <td class="c-num">${esc(r.pp)}</td>
         <td class="c-num">${esc(r.sg)}</td>
@@ -132,7 +131,6 @@ function renderStandings(elId, rows){
               <th class="c-pos">Pos</th>
               <th class="c-team">Equipo</th>
               <th class="c-num">Ptos</th>
-              <th class="c-num">PJ</th>
               <th class="c-num">PG</th>
               <th class="c-num">PP</th>
               <th class="c-num">SG</th>
