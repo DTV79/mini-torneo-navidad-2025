@@ -384,3 +384,11 @@ header.container p{
   font-weight: 900;
   color: #facc15;
 }
+
+
+/* Campeón alineado como el resto de cards */
+.card.championCard{
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
