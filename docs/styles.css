@@ -269,3 +269,22 @@ h1{
 ul{ margin: 8px 0 0 18px; padding: 0; }
 li{ margin: 6px 0; color: rgba(255,255,255,.88); }
 b{ color: rgba(255,255,255,.95); }
+
+
+/* En móvil vertical: priorizar la columna Equipo */
+@media (max-width: 520px){
+  .c-pos{ width: 34px; }
+  .c-num{ width: 38px; }
+
+  /* Dale espacio garantizado al nombre */
+  .c-team{
+    min-width: 160px;
+  }
+
+  /* Evita que desaparezca el texto del equipo */
+  .standings-table .c-team{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
