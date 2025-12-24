@@ -274,12 +274,10 @@ b{ color: rgba(255,255,255,.95); }
 /* En móvil vertical: priorizar la columna Equipo */
 @media (max-width: 520px){
   .c-pos{ width: 34px; }
-  .c-num{ width: 38px; }
+  .c-num{ width: 40px; }  /* un pelín más estrecho */
+  .c-team{ width: auto; } /* que sea la que se quede el resto */
+}
 
-  /* Dale espacio garantizado al nombre */
-  .c-team{
-    min-width: 160px;
-  }
 
   /* Evita que desaparezca el texto del equipo */
   .standings-table .c-team{
