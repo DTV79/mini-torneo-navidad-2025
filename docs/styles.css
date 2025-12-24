@@ -333,3 +333,13 @@ b{ color: rgba(255,255,255,.95); }
   border: 2px solid #ef4444 !important;
 }
 
+/* Títulos de eliminatorias */
+.card.bracketCard > h2{
+  color: #a855f7;   /* morado */
+  font-weight: 800;
+}
+
+.card.finalCard > h2{
+  color: #ef4444;   /* rojo */
+  font-weight: 800;
+}
