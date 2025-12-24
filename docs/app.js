@@ -170,33 +170,35 @@ function renderBracket(data){
 
   const bracket = data.bracket || {};
   const semis = Array.isArray(bracket.semifinals) ? bracket.semifinals : [];
-  const fin = bracket.final || null;
+  const fin = bracket.final || null;   // 👈 ESTA LÍNEA ES CLAVE
 
-  const noTeamsYet =
-    (!semis.length || semis.every(s => !String(s.teamA||"").trim() && !String(s.teamB||"").trim()));
-
-  // --- SEMIFINALES ---
-  if (noTeamsYet){
+  /* --- SEMIFINALES --- */
+  if (!semis.length){
     semisEl.innerHTML =
       `<p class="muted">Liguilla aún no terminada.<br>Pendiente de clasificados.</p>`;
   } else {
-    semisEl.innerHTML = semis.map(m => `
-      <div class="section">
-        <div class="subhead">
-          <span class="subhead-label">${esc(m.label || "Semifinal")}</span>
-        </div>
-        ${matchCard(m)}
-      </div>
-    `).join("");
+    semisEl.innerHTML = semis.map(matchCard).join("");
   }
 
-  // --- FINAL ---
-  if (!fin || (!String(fin.teamA||"").trim() && !String(fin.teamB||"").trim())){
+  /* --- FINAL --- */
+  if (!fin || !fin.teamA || !fin.teamB){
     finalEl.innerHTML = `<p class="muted">Final pendiente</p>`;
   } else {
     finalEl.innerHTML = matchCard(fin);
   }
+
+  /* --- CAMPEÓN --- */
+  const championEl = document.getElementById("championCard");
+  const championNameEl = document.getElementById("championName");
+
+  if (fin && fin.winner && String(fin.winner).trim()){
+    championNameEl.textContent = fin.winner;
+    championEl.style.display = "block";
+  } else {
+    championEl.style.display = "none";
+  }
 }
+
 
 
 
@@ -246,15 +248,6 @@ load().then(raw => {
 
   // Eliminatorias
   renderBracket(data);
-
-  // --- CAMPEÓN ---
-const championEl = document.getElementById("championCard");
-const championNameEl = document.getElementById("championName");
-
-if (fin && fin.winner && String(fin.winner).trim()){
-  championNameEl.textContent = fin.winner;
-  championEl.style.display = "block";
-}
 
 
 }).catch(err => {
