@@ -41,8 +41,9 @@ function renderTeams(elId, teams){
 }
 
 function matchCard(m){
-  const winner = m.winner ?? m.teamA;
-  const loser  = m.loser  ?? m.teamB;
+  const hasWinner = !!(m.winner && String(m.winner).trim().length);
+  const winner = hasWinner ? m.winner : (m.teamA ?? "");
+  const loser  = hasWinner ? (m.loser ?? "") : (m.teamB ?? "");
 
   // Nuevo: sets por set -> [{w:6,l:4},{w:3,l:6},{w:6,l:2}]
   const sets = Array.isArray(m.sets) ? m.sets : [];
@@ -69,7 +70,7 @@ function matchCard(m){
           </thead>
           <tbody>
             <tr>
-              <td class="teamcell winner">${esc(winner)}</td>
+              <td class="teamcell ${hasWinner ? "winner" : ""}">${esc(winner)}</td>
               <td>${esc(s1w)}</td>
               <td>${esc(s2w)}</td>
               <td>${esc(s3w)}</td>
@@ -160,32 +161,46 @@ function renderStandings(elId, rows){
 }
 
 function renderBracket(elId, data){
+  const el = document.getElementById(elId);
   const bracket = data.bracket || {};
-  const semis = bracket.semifinals || [];
+  const semis = Array.isArray(bracket.semifinals) ? bracket.semifinals : [];
   const final = bracket.final || null;
-  const champion = data.champion || "Pendiente";
 
-  const semisHtml = semis.length ? `
-    <ul>
-      ${semis.map(s => {
-        const res = s.result ? ` — <b>${esc(s.result)}</b>` : "";
-        return `<li><b>${esc(s.label)}</b>: ${esc(s.a)} vs ${esc(s.b)}${res}</li>`;
-      }).join("")}
-    </ul>
-  ` : `<p class="muted">Pendiente</p>`;
+  const noTeamsYet =
+    (!semis.length || semis.every(s => !String(s.teamA||"").trim() && !String(s.teamB||"").trim())) &&
+    (!final || (!String(final.teamA||"").trim() && !String(final.teamB||"").trim()));
 
-  const finalHtml = final ? `
-    <p>${esc(final.a)} vs ${esc(final.b)} ${final.result ? `— <b>${esc(final.result)}</b>` : ""}</p>
-  ` : `<p class="muted">Pendiente</p>`;
+  if (noTeamsYet){
+    el.innerHTML = `<p class="muted">Liguilla aún no terminada. Pendiente de clasificados</p>`;
+    return;
+  }
 
-  document.getElementById(elId).innerHTML = `
+  const semiHtml = semis.length
+    ? semis.map(m => `
+        <div style="margin-bottom:10px">
+          <div class="subhead"><span class="subhead-label">${esc(m.label || "Semifinal")}</span></div>
+          ${matchCard(m)}
+        </div>
+      `).join("")
+    : `<p class="muted">Pendiente</p>`;
+
+  const finalHtml = (final && (String(final.teamA||"").trim() || String(final.teamB||"").trim()))
+    ? `
+      <div style="margin-top:10px">
+        <div class="subhead"><span class="subhead-label">Final</span></div>
+        ${matchCard(final)}
+      </div>
+    `
+    : `<p class="muted">Final pendiente</p>`;
+
+  el.innerHTML = `
     <div style="display:grid;gap:10px">
-      <div><b>Semifinales</b>${semisHtml}</div>
+      <div><b>Semifinales</b>${semiHtml}</div>
       <div><b>Final</b>${finalHtml}</div>
-      <div style="font-size:18px"><b>Campeón:</b> ${esc(champion)}</div>
     </div>
   `;
 }
+
 
 function normalizeToCurrentSchema(data){
   // Si todavía tienes el JSON viejo (matches con stage/group/teamA...), lo dejamos.
