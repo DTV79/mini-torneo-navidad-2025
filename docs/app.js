@@ -111,7 +111,6 @@ function renderStandings(elId, rows){
         <td class="c-team">${esc(r.team)}</td>
         <td class="c-num">${esc(r.ptos)}</td>
         <td class="c-num">${esc(r.pg)}</td>
-        <td class="c-num">${esc(r.pp)}</td>
         <td class="c-num">${esc(r.sg)}</td>
         <td class="c-num">${esc(r.sp)}</td>
         <td class="c-num">${esc(r.sd)}</td>
@@ -132,7 +131,6 @@ function renderStandings(elId, rows){
               <th class="c-team">Equipo</th>
               <th class="c-num">Ptos</th>
               <th class="c-num">PG</th>
-              <th class="c-num">PP</th>
               <th class="c-num">SG</th>
               <th class="c-num">SP</th>
               <th class="c-num">SD</th>
@@ -149,8 +147,6 @@ function renderStandings(elId, rows){
         <em>
           PTOS: Puntos Totales ·
           PG: Partidos Ganados ·
-          PP: Partidos Perdidos ·
-          Des: Descansos ·
           SG: Sets Ganados ·
           SP: Sets Perdidos ·
           SD: Diferencia Sets ·
