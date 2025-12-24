@@ -152,7 +152,7 @@ h1{
 
 .matchgrid{ width:100%; }
 
-/* ===== Partidos (FINAL): sets pegados al nombre y sin desbordes ===== */
+/* ===== Partidos (FINAL): sets MÁS cerca del nombre ===== */
 .settable{
   width: 100%;
   border-collapse: collapse;
@@ -174,11 +174,10 @@ h1{
   font-weight: 800;
 }
 
-/* Columna EQUIPOS: una sola línea y a la izquierda.
-   IMPORTANTE: bajamos su ancho para que los sets "se acerquen" */
+/* Columna EQUIPOS: una línea, y más estrecha para empujar sets a la izquierda */
 .settable th:nth-child(1),
 .settable td:nth-child(1){
-  width: 46%;              /* <-- esto es lo que mueve I/II/III a la izquierda */
+  width: 40%;              /* <-- BAJA esto si quieres aún más pegado (38%, 36%) */
   text-align: left;
   padding-left: 0;
   padding-right: 2px;
@@ -187,11 +186,11 @@ h1{
   text-overflow: ellipsis;
 }
 
-/* Sets: muy compactos y alineados a la izquierda para que no queden "separados" */
+/* Sets: alineados a la izquierda y con más ancho (para ocupar el “hueco”) */
 .settable th:nth-child(2), .settable td:nth-child(2),
 .settable th:nth-child(3), .settable td:nth-child(3),
 .settable th:nth-child(4), .settable td:nth-child(4){
-  width: 14.66%;           /* 56 + 14.66*3 ≈ 100 */
+  width: 20%;              /* 40 + 20*3 = 100 */
   text-align: left;
   padding-left: 0;
   padding-right: 1px;
@@ -209,7 +208,13 @@ h1{
   font-weight: 700;
 }
 
-
+/* El nombre SIEMPRE en una línea (por clase) */
+.settable td.teamcell{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: normal;
+}
 
 /* ===== Clasificación (SIN SCROLL, compacta) ===== */
 .standings-table{
@@ -264,40 +269,3 @@ h1{
 ul{ margin: 8px 0 0 18px; padding: 0; }
 li{ margin: 6px 0; color: rgba(255,255,255,.88); }
 b{ color: rgba(255,255,255,.95); }
-
-/* Partidos: el nombre del equipo SIEMPRE en una línea */
-.settable td.teamcell{
-  white-space: nowrap !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: normal;
-}
-
-
-/* ===== Partidos: sets más cerca del nombre ===== */
-.settable{
-  table-layout: fixed;
-  width: 100%;
-}
-
-/* Reduce la columna EQUIPOS para que el bloque I/II/III se acerque */
-.settable th:nth-child(1),
-.settable td:nth-child(1){
-  width: 58% !important;   /* <-- baja de 62/70 a 58 */
-}
-
-/* Reparte el resto entre I/II/III y manténlos compactos */
-.settable th:nth-child(2), .settable td:nth-child(2),
-.settable th:nth-child(3), .settable td:nth-child(3),
-.settable th:nth-child(4), .settable td:nth-child(4){
-  width: 14% !important;   /* 58 + 14*3 = 100 */
-  text-align: left;
-  padding-left: 0 !important;
-  padding-right: 1px !important;
-}
-
-/* Quita aire horizontal global */
-.settable th, .settable td{
-  padding-left: 0 !important;
-  padding-right: 2px !important;
-}
