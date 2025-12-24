@@ -392,3 +392,17 @@ header.container p{
   max-width: none;
   margin: 0;
 }
+
+
+/* Quitar enlaces automáticos del móvil (iOS data detectors) */
+a[x-apple-data-detectors],
+a[x-apple-data-detectors-type],
+a[href^="tel:"],
+a[href^="mailto:"],
+a[href^="maps:"],
+a[href^="https://maps.google."]{
+  color: inherit !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  cursor: default !important;
+}
