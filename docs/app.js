@@ -41,20 +41,23 @@ function renderTeams(elId, teams){
 }
 
 function matchCard(m){
-  const hasWinner = !!(m.winner && String(m.winner).trim().length);
-  const winner = hasWinner ? m.winner : (m.teamA ?? "");
-  const loser  = hasWinner ? (m.loser ?? "") : (m.teamB ?? "");
+  // ORDEN FIJO: tal cual viene de Excel
+  const teamA = m.teamA ?? "";
+  const teamB = m.teamB ?? "";
 
-  // Nuevo: sets por set -> [{w:6,l:4},{w:3,l:6},{w:6,l:2}]
+  // Ganador solo para pintar en verde (no para reordenar)
+  const winnerName = String(m.winner || "").trim();
+
+  const aIsWinner = winnerName && winnerName.toLowerCase() === String(teamA).trim().toLowerCase();
+  const bIsWinner = winnerName && winnerName.toLowerCase() === String(teamB).trim().toLowerCase();
+
   const sets = Array.isArray(m.sets) ? m.sets : [];
-
-  // Render columnas I/II/III siempre (si falta, vacío)
-  const s1w = sets[0]?.w ?? "";
-  const s1l = sets[0]?.l ?? "";
-  const s2w = sets[1]?.w ?? "";
-  const s2l = sets[1]?.l ?? "";
-  const s3w = sets[2]?.w ?? "";
-  const s3l = sets[2]?.l ?? "";
+  const a1 = sets[0]?.w ?? "";
+  const b1 = sets[0]?.l ?? "";
+  const a2 = sets[1]?.w ?? "";
+  const b2 = sets[1]?.l ?? "";
+  const a3 = sets[2]?.w ?? "";
+  const b3 = sets[2]?.l ?? "";
 
   return `
     <div class="matchcard">
@@ -70,16 +73,16 @@ function matchCard(m){
           </thead>
           <tbody>
             <tr>
-              <td class="teamcell ${hasWinner ? "winner" : ""}">${esc(winner)}</td>
-              <td>${esc(s1w)}</td>
-              <td>${esc(s2w)}</td>
-              <td>${esc(s3w)}</td>
+              <td class="teamcell ${aIsWinner ? "winner" : ""}">${esc(teamA)}</td>
+              <td>${esc(a1)}</td>
+              <td>${esc(a2)}</td>
+              <td>${esc(a3)}</td>
             </tr>
             <tr>
-              <td class="teamcell">${esc(loser)}</td>
-              <td>${esc(s1l)}</td>
-              <td>${esc(s2l)}</td>
-              <td>${esc(s3l)}</td>
+              <td class="teamcell ${bIsWinner ? "winner" : ""}">${esc(teamB)}</td>
+              <td>${esc(b1)}</td>
+              <td>${esc(b2)}</td>
+              <td>${esc(b3)}</td>
             </tr>
           </tbody>
         </table>
@@ -87,6 +90,7 @@ function matchCard(m){
     </div>
   `;
 }
+
 
 function renderMatches(elId, matches){
   if (!matches || !matches.length){
