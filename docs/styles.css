@@ -190,7 +190,7 @@ h1{
 .settable th:nth-child(2), .settable td:nth-child(2),
 .settable th:nth-child(3), .settable td:nth-child(3),
 .settable th:nth-child(4), .settable td:nth-child(4){
-  width: 20%;              /* 40 + 20*3 = 100 */
+  width: 16%;              /* 40 + 20*3 = 100 */
   text-align: left;
   padding-left: 0;
   padding-right: 1px;
