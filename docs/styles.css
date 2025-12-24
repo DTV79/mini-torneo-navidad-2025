@@ -286,3 +286,35 @@ b{ color: rgba(255,255,255,.95); }
     text-overflow: ellipsis;
   }
 }
+
+/* ===== Clasificación: móvil vertical SIEMPRE muestra Equipo ===== */
+@media (max-width: 520px){
+  /* que el navegador reparta ancho de forma inteligente */
+  .standings-table{
+    table-layout: auto !important;
+  }
+
+  /* el equipo tiene prioridad: que se vea sí o sí */
+  .standings-table .c-team{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 9999px; /* evita que se quede a 0 */
+  }
+
+  /* Ocultamos columnas menos importantes para dejar espacio a Equipo */
+  /* 5=SG, 6=SP, 8=PGan, 9=PPer, 10=PDif */
+  .standings-table th:nth-child(5), .standings-table td:nth-child(5),
+  .standings-table th:nth-child(6), .standings-table td:nth-child(6),
+  .standings-table th:nth-child(8), .standings-table td:nth-child(8),
+  .standings-table th:nth-child(9), .standings-table td:nth-child(9),
+  .standings-table th:nth-child(10), .standings-table td:nth-child(10){
+    display: none;
+  }
+
+  /* Compactar un poco */
+  .standings-table th, .standings-table td{
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+}
