@@ -247,6 +247,16 @@ load().then(raw => {
   // Eliminatorias
   renderBracket(data);
 
+  // --- CAMPEÓN ---
+const championEl = document.getElementById("championCard");
+const championNameEl = document.getElementById("championName");
+
+if (fin && fin.winner && String(fin.winner).trim()){
+  championNameEl.textContent = fin.winner;
+  championEl.style.display = "block";
+}
+
+
 }).catch(err => {
   document.getElementById("updated").textContent = "Error cargando datos";
   document.getElementById("groupZ").innerHTML = `<p>${esc(err.message)}</p>`;
