@@ -173,12 +173,34 @@ function renderBracket(data){
   const fin = bracket.final || null;   // 👈 ESTA LÍNEA ES CLAVE
 
   /* --- SEMIFINALES --- */
-  if (!semis.length){
-    semisEl.innerHTML =
-      `<p class="muted">Liguilla aún no terminada.<br>Pendiente de clasificados.</p>`;
-  } else {
-    semisEl.innerHTML = semis.map(matchCard).join("");
-  }
+if (!semis.length){
+  semisEl.innerHTML = `
+    <p class="muted">1ª Semifinal pendiente</p>
+    <p class="muted">2ª Semifinal pendiente</p>
+  `;
+} else {
+  semisEl.innerHTML = semis.map((m, idx) => {
+    const label = idx === 0 ? "1ª Semifinal" : "2ª Semifinal";
+
+    const hasTeams =
+      String(m.teamA || "").trim() &&
+      String(m.teamB || "").trim();
+
+    if (!hasTeams){
+      return `<p class="muted">${label} pendiente</p>`;
+    }
+
+    return `
+      <div class="section">
+        <div class="subhead">
+          <span class="subhead-label">${label}</span>
+        </div>
+        ${matchCard(m)}
+      </div>
+    `;
+  }).join("");
+}
+
 
   /* --- FINAL --- */
   if (!fin || !fin.teamA || !fin.teamB){
