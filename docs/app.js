@@ -164,46 +164,40 @@ function renderStandings(elId, rows){
   `;
 }
 
-function renderBracket(elId, data){
-  const el = document.getElementById(elId);
+function renderBracket(data){
+  const semisEl = document.getElementById("bracket-semifinals");
+  const finalEl = document.getElementById("bracket-final");
+
   const bracket = data.bracket || {};
   const semis = Array.isArray(bracket.semifinals) ? bracket.semifinals : [];
-  const final = bracket.final || null;
+  const fin = bracket.final || null;
 
   const noTeamsYet =
-    (!semis.length || semis.every(s => !String(s.teamA||"").trim() && !String(s.teamB||"").trim())) &&
-    (!final || (!String(final.teamA||"").trim() && !String(final.teamB||"").trim()));
+    (!semis.length || semis.every(s => !String(s.teamA||"").trim() && !String(s.teamB||"").trim()));
 
+  // --- SEMIFINALES ---
   if (noTeamsYet){
-    el.innerHTML = `<p class="muted">Liguilla aún no terminada. Pendiente de clasificados</p>`;
-    return;
+    semisEl.innerHTML =
+      `<p class="muted">Liguilla aún no terminada.<br>Pendiente de clasificados.</p>`;
+  } else {
+    semisEl.innerHTML = semis.map(m => `
+      <div class="section">
+        <div class="subhead">
+          <span class="subhead-label">${esc(m.label || "Semifinal")}</span>
+        </div>
+        ${matchCard(m)}
+      </div>
+    `).join("");
   }
 
-  const semiHtml = semis.length
-    ? semis.map(m => `
-        <div style="margin-bottom:10px">
-          <div class="subhead"><span class="subhead-label">${esc(m.label || "Semifinal")}</span></div>
-          ${matchCard(m)}
-        </div>
-      `).join("")
-    : `<p class="muted">Pendiente</p>`;
-
-  const finalHtml = (final && (String(final.teamA||"").trim() || String(final.teamB||"").trim()))
-    ? `
-      <div style="margin-top:10px">
-        <div class="subhead"><span class="subhead-label">Final</span></div>
-        ${matchCard(final)}
-      </div>
-    `
-    : `<p class="muted">Final pendiente</p>`;
-
-  el.innerHTML = `
-    <div style="display:grid;gap:10px">
-      <div><b>Semifinales</b>${semiHtml}</div>
-      <div><b>Final</b>${finalHtml}</div>
-    </div>
-  `;
+  // --- FINAL ---
+  if (!fin || (!String(fin.teamA||"").trim() && !String(fin.teamB||"").trim())){
+    finalEl.innerHTML = `<p class="muted">Final pendiente</p>`;
+  } else {
+    finalEl.innerHTML = matchCard(fin);
+  }
 }
+
 
 
 function normalizeToCurrentSchema(data){
@@ -251,7 +245,7 @@ load().then(raw => {
   renderStandings("standingsY", data.standings?.Y || []);
 
   // Eliminatorias
-  renderBracket("bracket", data);
+  renderBracket(data);
 
 }).catch(err => {
   document.getElementById("updated").textContent = "Error cargando datos";
