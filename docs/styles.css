@@ -178,7 +178,7 @@ h1{
    IMPORTANTE: bajamos su ancho para que los sets "se acerquen" */
 .settable th:nth-child(1),
 .settable td:nth-child(1){
-  width: 56%;              /* <-- esto es lo que mueve I/II/III a la izquierda */
+  width: 46%;              /* <-- esto es lo que mueve I/II/III a la izquierda */
   text-align: left;
   padding-left: 0;
   padding-right: 2px;
