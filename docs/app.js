@@ -148,7 +148,6 @@ function renderStandings(elId, rows){
       <div class="standings-legend">
         <em>
           PTOS: Puntos Totales ·
-          PJ: Partidos Jugados ·
           PG: Partidos Ganados ·
           PP: Partidos Perdidos ·
           Des: Descansos ·
