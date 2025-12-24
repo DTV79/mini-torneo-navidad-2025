@@ -309,3 +309,27 @@ b{ color: rgba(255,255,255,.95); }
     font-size: 12px;
   }
 }
+
+
+/* ===== Cards por sección: borde por color ===== */
+.card{
+  border: 1px solid var(--line);
+}
+
+/* Grupo Z: borde azul */
+.card.groupZ{
+  border-color: rgba(96,165,250,.70);          /* azul */
+  box-shadow: 0 12px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(96,165,250,.18) inset;
+}
+
+/* Grupo Y: borde naranja */
+.card.groupY{
+  border-color: rgba(245,158,11,.75);          /* naranja */
+  box-shadow: 0 12px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(245,158,11,.16) inset;
+}
+
+/* Eliminatorias: propongo morado (no choca con verde/azul/naranja) */
+.card.bracketCard{
+  border-color: rgba(168,85,247,.70);          /* morado */
+  box-shadow: 0 12px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(168,85,247,.16) inset;
+}
