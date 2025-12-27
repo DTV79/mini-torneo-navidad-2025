@@ -446,14 +446,3 @@ a[href^="https://maps.google."]{
 }
 
 
-/* En escritorio: cards alineadas y misma altura por fila */
-@media (min-width: 980px){
-  .grid2{
-    align-items: stretch;   /* estira los items */
-    grid-auto-rows: 1fr;    /* cada fila tiene la altura de la más alta */
-  }
-
-  .grid2 > .card{
-    height: 100%;
-  }
-}
