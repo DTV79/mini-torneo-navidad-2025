@@ -115,13 +115,15 @@ function renderStandings(elId, rows){
         <td class="c-pos">${esc(r.pos)}</td>
         <td class="c-team">${esc(r.team)}</td>
         <td class="c-num">${esc(r.ptos)}</td>
+        <td class="c-num">${esc(r.pj)}</td>
         <td class="c-num">${esc(r.pg)}</td>
+        <td class="c-num">${esc(r.pp)}</td>
         <td class="c-num">${esc(r.sg)}</td>
         <td class="c-num">${esc(r.sp)}</td>
         <td class="c-num">${esc(r.sd)}</td>
-        <td class="c-num">${esc(r.pgan)}</td>
-        <td class="c-num">${esc(r.pper)}</td>
-        <td class="c-num">${esc(r.pdif)}</td>
+        <td class="c-num">${esc(r.jg)}</td>
+        <td class="c-num">${esc(r.jp)}</td>
+        <td class="c-num">${esc(r.jd)}</td>
       </tr>
     `;
   }).join("");
@@ -135,13 +137,15 @@ function renderStandings(elId, rows){
               <th class="c-pos">Pos</th>
               <th class="c-team">Equipo</th>
               <th class="c-num">Ptos</th>
+              <th class="c-num">PJ</th>
               <th class="c-num">PG</th>
+              <th class="c-num">PP</th>
               <th class="c-num">SG</th>
               <th class="c-num">SP</th>
               <th class="c-num">SD</th>
-              <th class="c-num">PGan</th>
-              <th class="c-num">PPer</th>
-              <th class="c-num">PDif</th>
+              <th class="c-num">JG</th>
+              <th class="c-num">JP</th>
+              <th class="c-num">JD</th>
             </tr>
           </thead>
           <tbody>${body}</tbody>
@@ -151,13 +155,15 @@ function renderStandings(elId, rows){
       <div class="standings-legend">
         <em>
           PTOS: Puntos Totales ·
+          PJ: Partidos Jugados ·
           PG: Partidos Ganados ·
+          PP: Partidos Perdidos ·
           SG: Sets Ganados ·
           SP: Sets Perdidos ·
           SD: Diferencia Sets ·
-          PGan: Puntos Ganados ·
-          PPer: Puntos Perdidos ·
-          PDif: Diferencia Puntos
+          JG: Juegos Ganados ·
+          JP: Juegos Perdidos ·
+          JD: Diferencia Juegos
         </em>
       </div>
     </div>
